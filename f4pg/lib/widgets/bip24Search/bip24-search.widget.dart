@@ -52,6 +52,10 @@ class BipSearchSingle extends StatelessWidget {
 
   BipSearchSingle({required this.bipIndex});
 
+  void searchBipList(String val) {
+    
+  }
+
   @override
   Widget build(BuildContext context) {
   return SizedBox(
