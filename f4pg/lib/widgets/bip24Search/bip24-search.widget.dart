@@ -9,6 +9,7 @@ class Bip24SearchWidget extends StatelessWidget {
      children: [
       Text("bip24SearchWidget"),
       /* create row type system with dynamic flex box type behaviour and use for loop here after bip search filter */
+      /* I want to lock the input with a lock to lock bip or change it for rec (this or use breadcrumbs after input) */
       BipSearchSingle(bipIndex: 1),
       BipSearchSingle(bipIndex: 2),
       BipSearchSingle(bipIndex: 3),
@@ -39,7 +40,9 @@ class BipSearchSingle extends StatelessWidget {
   Widget build(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      child: TextFormField(
+      child: TextField(
+        /* not using TextFormField for now so I can utilize enabled */
+        enabled: true, /* add lock with bool for this so you can only edit one at a time */
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'bip $bipIndex',
