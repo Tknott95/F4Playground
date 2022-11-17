@@ -95,15 +95,19 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
             
           SizedBox(
             height: 50, // constrain height
-            child: ListView(
+            child: ListView.builder(
+              itemCount: bipsList.length,
               shrinkWrap: true,
-              children: const [
-                Text("HAHLOASDLKASLSHJK"),
-                Text("HAHLOASDLKASLHJK"),
-                Text("HAHLOASDLKASLHJK"),
-                Text("HAHLOASDLKASLHJK"),
-                Text("HAHLOASDLKASLHJK"),
-              ],
+              itemBuilder: (context, index) => ListTile(
+                title: Text(bipsList[index]),
+              ),
+              // children: const [
+              //   Text("HAHLOASDLKASLSHJK"),
+              //   Text("HAHLOASDLKASLHJK"),
+              //   Text("HAHLOASDLKASLHJK"),
+              //   Text("HAHLOASDLKASLHJK"),
+              //   Text("HAHLOASDLKASLHJK"),
+              // ],
             ),
           ),
 
