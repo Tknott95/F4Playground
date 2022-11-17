@@ -86,7 +86,9 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                   /* not using TextFormField for now so I can utilize enabled */
                   enabled: true, /* add lock with bool for this so you can only edit one at a time */
                   decoration: InputDecoration(
-                    border: UnderlineInputBorder(),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+                    ),
                     labelText: 'bip ${widget.bipIndex}',
                   ),
                 ),
@@ -111,29 +113,6 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
             ),
           ),
 
-
-        //   SingleChildScrollView(
-        //   scrollDirection: Axis.horizontal,
-        //   child: Row(
-        //   children: <Widget>[
-        //     Text('hi'),
-        //     Text('hi'),
-        //     Text('hi'),
-        //   ]
-        //   )
-        // )
-
-          
-            // Expanded(
-            //   child: ListView(
-            //     shrinkWrap: true,
-            //     children: [
-            //       Center(
-            //         child: Text('Entry A')
-            //       ),
-            //     ],
-            //   )
-            // )
         ],
       ),
     );
