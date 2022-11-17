@@ -22,7 +22,7 @@ class Bip24SearchWidget extends StatelessWidget {
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           /* turn these into loops and make screen size approp */
           BipSearchSingle(bipIndex: 5),
           BipSearchSingle(bipIndex: 6),
