@@ -94,7 +94,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
             ),
             
           SizedBox(
-            height: 50, // constrain height
+            height: 100, // constrain height
             child: ListView.builder(
               itemCount: bipsList.length,
               shrinkWrap: true,
