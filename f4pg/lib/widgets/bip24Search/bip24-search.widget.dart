@@ -16,14 +16,17 @@ class Bip24SearchWidget extends StatelessWidget {
           BipSearchSingle(bipIndex: 1),
           BipSearchSingle(bipIndex: 2),
           BipSearchSingle(bipIndex: 3),
+          BipSearchSingle(bipIndex: 4),
         ],
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BipSearchSingle(bipIndex: 4),
+          /* turn these into loops and make screen size approp */
           BipSearchSingle(bipIndex: 5),
           BipSearchSingle(bipIndex: 6),
+          BipSearchSingle(bipIndex: 7),
+          BipSearchSingle(bipIndex: 8),
         ],
       )
 
