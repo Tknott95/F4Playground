@@ -62,10 +62,13 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
 
+
   // BipSearchSingle({required this.bipIndex});
 
   void searchBipList(String val) {
-    
+    print(bipsList);
+
+    print('\n $val');
   }
 
   @override
@@ -79,6 +82,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
+                  onChanged: (val) => searchBipList(val),
                   /* not using TextFormField for now so I can utilize enabled */
                   enabled: true, /* add lock with bool for this so you can only edit one at a time */
                   decoration: InputDecoration(
