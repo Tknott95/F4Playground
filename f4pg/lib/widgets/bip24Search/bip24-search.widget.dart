@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-  
+import 'dart:io';
+ 
 class Bip24SearchWidget extends StatelessWidget {
 
   @override
@@ -52,9 +53,13 @@ class BipSearchSingle extends StatefulWidget {
   const BipSearchSingle({required this.bipIndex});
 
   State<BipSearchSingle> createState() => _BipSearchSingleState();
+  
 }
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
+
+  List<String> bipsList = new File('./bips.txt').readAsLinesSync();
+
 
 
   // BipSearchSingle({required this.bipIndex});
