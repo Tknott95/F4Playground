@@ -40,7 +40,7 @@ class Bip24SearchWidget extends StatelessWidget {
       /* I want to lock the input with a lock to lock bip or change it for rec (this or use breadcrumbs after input) */
       Row(
        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           BipSearchSingle(bipIndex: 1),
           BipSearchSingle(bipIndex: 2),
           BipSearchSingle(bipIndex: 3),
@@ -49,7 +49,7 @@ class Bip24SearchWidget extends StatelessWidget {
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           /* turn these into loops and make screen size approp */
           BipSearchSingle(bipIndex: 5),
           BipSearchSingle(bipIndex: 6),
@@ -77,7 +77,9 @@ class Bip24SearchWidget extends StatelessWidget {
 class BipSearchSingle extends StatefulWidget {
   final int bipIndex;
 
-  const BipSearchSingle({required this.bipIndex});
+  String? bipInputVal;
+
+  BipSearchSingle({required this.bipIndex, this.bipInputVal});
 
   State<BipSearchSingle> createState() => _BipSearchSingleState();
   
@@ -93,6 +95,10 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
   void setBipVal(String val) {
     print("\n setting bip val $val");  
+
+    setState(() {
+      widget.bipInputVal = val;
+    });
   }
 
   // BipSearchSingle({required this.bipIndex});
@@ -119,6 +125,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       width: 300,
       child: Column(
         children: [
+          Text('${widget.bipInputVal}'),
           SizedBox(
             width: 300,
             child: Padding(
