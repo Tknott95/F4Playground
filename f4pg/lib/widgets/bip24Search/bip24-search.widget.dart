@@ -122,7 +122,10 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
                   onChanged: (val) => searchBipList(val, widget.bipIndex),
-                  /* COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box */
+                  /** !!! @NOTE 
+                  * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
+                  * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
+                  **/
                   /* not using TextFormField for now so I can utilize enabled */
                   enabled: true, /* add lock with bool for this so you can only edit one at a time */
                   decoration: InputDecoration(
