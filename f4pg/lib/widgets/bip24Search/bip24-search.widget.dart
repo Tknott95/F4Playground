@@ -143,13 +143,6 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
               itemBuilder: (context, index) => ListTile(
                 title: Text(bipsList[index]),
               ),
-              // children: const [
-              //   Text("HAHLOASDLKASLSHJK"),
-              //   Text("HAHLOASDLKASLHJK"),
-              //   Text("HAHLOASDLKASLHJK"),
-              //   Text("HAHLOASDLKASLHJK"),
-              //   Text("HAHLOASDLKASLHJK"),
-              // ],
             ),
           ),
 
