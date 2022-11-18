@@ -1,5 +1,35 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
+
+/* figure out a way to store the nmemonic before firing it out from each single bip. I could use a list but I find a key val dictionary a better way */
+List<String> currNemonic = ['bb', 'cc'];
+
+var bips24 = {
+ 1: '',
+ 2: '',
+ 3: '',
+ 4: '',
+ 5: '',
+ 6: '',
+ 7: '',
+ 8: '',
+ 9: '',
+ 10: '',
+ 11: '',
+ 12: '',
+ 13: '',
+ 14: '',
+ 15: '',
+ 16: '',
+ 17: '',
+ 18: '',
+ 19: '',
+ 20: '',
+ 21: '',
+ 22: '',
+ 23: '',
+ 24: '',
+};
  
 class Bip24SearchWidget extends StatelessWidget {
 
@@ -71,6 +101,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     print(bipsList);
 
     print('\n $val');
+
+    print("\n $bips24");
 
     setState(() {
       bipsList = staticBipsList.where((element) => element.toLowerCase().contains(val.toLowerCase())).toList();
