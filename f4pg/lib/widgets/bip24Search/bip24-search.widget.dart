@@ -28,7 +28,7 @@ var bips24 = {
  22: '',
  23: '',
  24: '',
-};
+}; /* clear this after rec, you dont want such data persisting */
  
 class Bip24SearchWidget extends StatelessWidget {
 
