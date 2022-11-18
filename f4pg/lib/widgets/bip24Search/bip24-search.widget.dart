@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
-/* figure out a way to store the nmemonic before firing it out from each single bip. I could use a list but I find a key val dictionary a better way */
-List<String> currNemonic = ['bb', 'cc'];
-
 var bips24 = {
  1: '',
  2: '',
