@@ -97,10 +97,14 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
   // BipSearchSingle({required this.bipIndex});
 
-  void searchBipList(String val) {
+  void searchBipList(String val, int index) {
     print(bipsList);
 
     print('\n $val');
+
+
+   /* need to pass in index */
+    bips24[index] = val;
 
     print("\n $bips24");
 
@@ -120,7 +124,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
-                  onChanged: (val) => searchBipList(val),
+                  onChanged: (val) => searchBipList(val, widget.bipIndex),
+                  /* COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box */
                   /* not using TextFormField for now so I can utilize enabled */
                   enabled: true, /* add lock with bool for this so you can only edit one at a time */
                   decoration: InputDecoration(
