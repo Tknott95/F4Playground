@@ -98,6 +98,14 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   List<String> bipsList = new File('./bips.txt').readAsLinesSync();
 
 
+  // var txtController = TextEditingController();
+  TextEditingController txtController =  new TextEditingController(text: '');
+
+
+  void initState() {
+    // txtController = new TextEditingController(text: 'Initial value');
+  }
+
 
 
   void setBipVal(String val) {
@@ -107,6 +115,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       widget.isInputUnlocked = false;
 
       widget.bipInputVal = val;
+
+      txtController = new TextEditingController(text: val);
     });
   }
 
@@ -140,6 +150,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
+                  controller: txtController,
                   onChanged: (val) => searchBipList(val, widget.bipIndex),
                   /** !!! @NOTE 
                   * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
