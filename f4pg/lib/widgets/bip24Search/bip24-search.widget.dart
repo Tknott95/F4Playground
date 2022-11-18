@@ -144,7 +144,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
               itemCount: bipsList.length,
               shrinkWrap: true,
               itemBuilder: (context, index) => ListTile(
-                title: Text(bipsList[index]),
+                title: Text(bipsList[index]), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
               ),
             ),
           ),
