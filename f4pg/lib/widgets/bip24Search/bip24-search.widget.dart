@@ -91,6 +91,9 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
 
+  void setBipVal(String val) {
+    print("\n setting bip val $val");  
+  }
 
   // BipSearchSingle({required this.bipIndex});
 
@@ -144,7 +147,13 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
               itemCount: bipsList.length,
               shrinkWrap: true,
               itemBuilder: (context, index) => ListTile(
-                title: Text(bipsList[index]), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+                title: ElevatedButton(
+                  child: Text(bipsList[index]),
+                  onPressed: () { 
+                    setBipVal(bipsList[index]);
+                  },
+
+                ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
               ),
             ),
           ),
