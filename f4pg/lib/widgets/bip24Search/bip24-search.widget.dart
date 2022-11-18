@@ -99,7 +99,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
   // var txtController = TextEditingController();
-  TextEditingController txtController =  new TextEditingController(text: '');
+  TextEditingController txtController = TextEditingController(text: '');
 
 
   void initState() {
@@ -116,7 +116,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
       widget.bipInputVal = val;
 
-      txtController = new TextEditingController(text: val);
+      txtController = TextEditingController(text: val);
+      bipsList = staticBipsList.where((element) => element.toLowerCase().contains(val.toLowerCase())).toList();
     });
   }
 
