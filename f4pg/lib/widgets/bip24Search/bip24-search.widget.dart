@@ -108,16 +108,19 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
 
-  void setBipVal(String val) {
+  void setBipVal(String val, int bipIndex) {
     print("\n setting bip val $val");  
+
+    txtController = TextEditingController(text: val);
+      
+    bips24[bipIndex] = val;
+    print("\n $bips24");
 
     setState(() {
       widget.isInputUnlocked = false;
 
       widget.bipInputVal = val;
 
-      txtController = TextEditingController(text: val);
-      bipsList = staticBipsList.where((element) => element.toLowerCase().contains(val.toLowerCase())).toList();
     });
   }
 
@@ -178,7 +181,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                 title: ElevatedButton(
                   child: Text(bipsList[index]),
                   onPressed: () { 
-                    setBipVal(bipsList[index]);
+                    setBipVal(bipsList[index], widget.bipIndex);
                   },
 
                 ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
