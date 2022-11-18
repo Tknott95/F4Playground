@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 
@@ -78,11 +80,16 @@ class BipSearchSingle extends StatefulWidget {
   final int bipIndex;
 
   String? bipInputVal;
+  bool? isInputUnlocked = true;
 
-  BipSearchSingle({required this.bipIndex, this.bipInputVal});
+  BipSearchSingle({required this.bipIndex, this.bipInputVal, this.isInputUnlocked});
 
   State<BipSearchSingle> createState() => _BipSearchSingleState();
   
+
+  // onInit() {
+  //   this.isInputUnlocked = false;
+  // }
 }
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
@@ -97,6 +104,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     print("\n setting bip val $val");  
 
     setState(() {
+      widget.isInputUnlocked = false;
+
       widget.bipInputVal = val;
     });
   }
@@ -137,7 +146,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                   * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
                   **/
                   /* not using TextFormField for now so I can utilize enabled */
-                  enabled: true, /* add lock with bool for this so you can only edit one at a time */
+                  // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
                   decoration: InputDecoration(
                     border: UnderlineInputBorder(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
