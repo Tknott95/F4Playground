@@ -58,7 +58,9 @@ class BipSearchSingle extends StatefulWidget {
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
 
+  List<String> staticBipsList = new File('./bips.txt').readAsLinesSync();
   List<String> bipsList = new File('./bips.txt').readAsLinesSync();
+
 
 
 
@@ -69,6 +71,10 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     print(bipsList);
 
     print('\n $val');
+
+    setState(() {
+      bipsList = staticBipsList.where((element) => element.toLowerCase().contains(val.toLowerCase())).toList();
+    });
   }
 
   @override
