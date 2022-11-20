@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+/* NEEDS A DESIGN NOW THAT LOGIC IS DONE (rec page also has a wallName and password) */
 
 /* 
 * I might make a grid of 24 spots then you can click on each to input the bip.
