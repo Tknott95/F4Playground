@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -121,6 +122,18 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
       widget.bipInputVal = val;
 
+
+      var tempListForNow = [
+        '', '', '', '', '', '', '', '', 
+        '', '', '', '', '', '', '', '', 
+        '', '', '', '', '', '', '', ''
+      ];
+      bips24.forEach((key, value) { tempListForNow[key-1] = value;});
+
+      print(tempListForNow);
+
+      var tempJson = jsonEncode(tempListForNow);
+      print(tempJson);
     });
   }
 
