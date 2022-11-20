@@ -51,13 +51,26 @@ class Bip24SearchWidget extends StatelessWidget {
 
       SizedBox(
         height: 500,
-        child: GridView.count(
-          // padding: EdgeInsets.zero,
-          mainAxisSpacing: 0,
-          crossAxisSpacing: 1,
-          crossAxisCount: 3,
+        child: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1,
+            childAspectRatio: 10 // 1.5
+          ),
+          padding: EdgeInsets.zero,
           children: [
-            for (int i=0; i<24; i++)  BipSearchSingle(bipIndex: i),
+            // for (int i=0; i<24; i++) BipSearchSingle(bipIndex: i),
+            for (int i=0; i<24; i++)  
+              Container(
+                child: TextFormField(
+                enabled: false,
+                initialValue: "$i"
+              )
+            )
+
+            
+            // for (int i=0; i<24; i++)  BipSearchSingle(bipIndex: i),
             // BipSearchSingle(bipIndex: 1),
             // BipSearchSingle(bipIndex: 2),
             // BipSearchSingle(bipIndex: 3),
@@ -134,7 +147,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
   void setBipVal(String val, int bipIndex) {
-    print("\n setting bip val $val");  
+    print("\n setting bip val ${val}");  
 
     txtController = TextEditingController(text: val);
       
