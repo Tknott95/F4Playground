@@ -6,6 +6,7 @@ import 'dart:io';
 
 /* NEEDS A DESIGN NOW THAT LOGIC IS DONE (rec page also has a wallName and password) */
 
+/* this single nested widget tucked in could always be a locked input (type of render of the bip) to box spawning a modal  */
 /* 
 * I might make a grid of 24 spots then you can click on each to input the bip.
 * Each input brings up the modal up what is already coded to sleect the value via query unitl a design.
@@ -56,7 +57,7 @@ class Bip24SearchWidget extends StatelessWidget {
             crossAxisCount: 3,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
-            childAspectRatio: 10 // 1.5
+            childAspectRatio: 1.2 //10 // 1.2
           ),
           padding: EdgeInsets.zero,
           children: [
