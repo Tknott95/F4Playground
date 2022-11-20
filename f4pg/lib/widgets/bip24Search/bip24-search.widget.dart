@@ -4,7 +4,14 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+
+/* 
+* I might make a grid of 24 spots then you can click on each to input the bip.
+* Each input brings up the modal up what is already coded to sleect the value via query unitl a design.
+*/
+
 var bips24 = {
+ 0: '',
  1: '',
  2: '',
  3: '',
@@ -28,7 +35,6 @@ var bips24 = {
  21: '',
  22: '',
  23: '',
- 24: '',
 }; /* clear this after rec, you dont want such data persisting */
  
 class Bip24SearchWidget extends StatelessWidget {
@@ -41,25 +47,42 @@ class Bip24SearchWidget extends StatelessWidget {
       Text("bip24SearchWidget"),
       /* create row type system with dynamic flex box type behaviour and use for loop here after bip search filter */
       /* I want to lock the input with a lock to lock bip or change it for rec (this or use breadcrumbs after input) */
-      Row(
-       mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BipSearchSingle(bipIndex: 1),
-          BipSearchSingle(bipIndex: 2),
-          BipSearchSingle(bipIndex: 3),
-          BipSearchSingle(bipIndex: 4),
-        ],
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          /* turn these into loops and make screen size approp */
-          BipSearchSingle(bipIndex: 5),
-          BipSearchSingle(bipIndex: 6),
-          BipSearchSingle(bipIndex: 7),
-          BipSearchSingle(bipIndex: 8),
-        ],
+
+      SizedBox(
+        height: 500,
+        child: GridView.count(
+          // padding: EdgeInsets.zero,
+          mainAxisSpacing: 0,
+          crossAxisSpacing: 1,
+          crossAxisCount: 3,
+          children: [
+            for (int i=0; i<24; i++)  BipSearchSingle(bipIndex: i),
+            // BipSearchSingle(bipIndex: 1),
+            // BipSearchSingle(bipIndex: 2),
+            // BipSearchSingle(bipIndex: 3),
+            // BipSearchSingle(bipIndex: 4),
+          ],
+        ),
       )
+      // Row(
+      //  mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
+        //   BipSearchSingle(bipIndex: 1),
+        //   BipSearchSingle(bipIndex: 2),
+        //   BipSearchSingle(bipIndex: 3),
+        //   BipSearchSingle(bipIndex: 4),
+        // ],
+      // ),
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
+      //     /* turn these into loops and make screen size approp */
+      //     BipSearchSingle(bipIndex: 5),
+      //     BipSearchSingle(bipIndex: 6),
+      //     BipSearchSingle(bipIndex: 7),
+      //     BipSearchSingle(bipIndex: 8),
+      //   ],
+      // )
 
 
       // Padding(
@@ -128,7 +151,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
         '', '', '', '', '', '', '', '', 
         '', '', '', '', '', '', '', ''
       ];
-      bips24.forEach((key, value) { tempListForNow[key-1] = value;});
+      /* if start from 1 then -1 else 0 then leave key as is */
+      bips24.forEach((key, value) { tempListForNow[key] = value;});
 
       print(tempListForNow);
 
@@ -158,12 +182,11 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
       child: Column(
         children: [
           Text('${widget.bipInputVal}'),
           SizedBox(
-            width: 300,
+           width: 100,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
@@ -185,8 +208,9 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
               ),
             ),
             
+          // Expanded(
           SizedBox(
-            height: 100, // constrain height
+            height: 200, // constrain height
             child: ListView.builder(
               itemCount: bipsList.length,
               shrinkWrap: true,
