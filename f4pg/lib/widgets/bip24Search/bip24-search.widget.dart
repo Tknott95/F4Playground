@@ -60,14 +60,14 @@ class Bip24SearchWidget extends StatelessWidget {
           ),
           padding: EdgeInsets.zero,
           children: [
-            // for (int i=0; i<24; i++) BipSearchSingle(bipIndex: i),
-            for (int i=0; i<24; i++)  
-              Container(
-                child: TextFormField(
-                enabled: false,
-                initialValue: "$i"
-              )
-            )
+            for (int i=0; i<24; i++) BipSearchSingle(bipIndex: i),
+            // for (int i=0; i<24; i++)  
+            //   Container(
+            //     child: TextFormField(
+            //     enabled: false,
+            //     initialValue: "$i"
+            //   )
+            // )
 
             
             // for (int i=0; i<24; i++)  BipSearchSingle(bipIndex: i),
