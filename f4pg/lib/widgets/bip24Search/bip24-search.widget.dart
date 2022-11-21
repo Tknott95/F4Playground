@@ -202,19 +202,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                 // showDialog(
                 //   context: context,
                 //   // barrierDismissible: false,
-                //   builder: (_) => Container(
-                //     child: CupertinoAlertDialog(
-                //       // context and builder are
-                //       // required properties in this widget
-                //       // context: context,
-                //       // builder: (BuildContext context) {
-                //         // we set up a container inside which
-                //         // we create center column and display text
-                //         // Returning SizedBox instead of a Container
-                //         content: Material(
-                //           child: _bipInputSearch(context),
-                //         )
-                //     ),
+                //   builder: (context) => Container(
+                //     child:  Material( child: _bipInputSearch(context)),
                 //   ),
                 // );
               },
