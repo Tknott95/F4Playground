@@ -123,7 +123,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   
     entry = OverlayEntry(
       builder: (context) =>  Positioned(
-        top: _offset.dy,
+        top: _offset.dy, /*  + _size.height */
         left: _offset.dx,
         width: _size.width,
         child: _bipInputSearch(context)
@@ -131,6 +131,11 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     );
 
     _overlay.insert(entry!);
+  }
+
+  void hideOverlay() {
+    entry?.remove();
+    entry = null;
   }
 
   void toggleBipSearch() {
@@ -142,6 +147,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
   void setBipVal(String val, int bipIndex) {
+    hideOverlay();
     print("\n setting bip val ${val}");  
 
     widget.txtController = TextEditingController(text: val);
@@ -299,16 +305,16 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     return Material(
       // height: 400,
       child: SizedBox(
-        height: 400,
+        height: 300,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
+              // Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
               
               Column(
                 children: [
-                  Text('${widget.bipInputVal}'),
+                  // Text('${widget.bipInputVal}'),
                   SizedBox(
                   width: 100,
                     child: Padding(
@@ -344,6 +350,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                           child: Text(bipsList[index]),
                           onPressed: () { 
                             setBipVal(bipsList[index], widget.bipIndex);
+                            // hideOverlay();
                           },
               
                         ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
