@@ -60,7 +60,7 @@ class Bip24SearchWidget extends StatelessWidget {
             crossAxisCount: 4,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
-            childAspectRatio: 1 //10 // 1.2
+            // childAspectRatio: 1.5 //10 // 1.2
           ),
           padding: EdgeInsets.zero,
           children: [
@@ -113,7 +113,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
   void toggleBipSearch() {
     setState(() {
-      showBipSearch = true;
+      showBipSearch = !showBipSearch;
     });
   }
 
@@ -148,6 +148,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
       var tempJson = jsonEncode(tempListForNow);
       print(tempJson);
+
+      showBipSearch = false;
     });
   }
 
@@ -313,7 +315,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                     itemCount: bipsList.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) => ListTile(
-                      title: ElevatedButton(
+                      title: MaterialButton(
                         child: Text(bipsList[index]),
                         onPressed: () { 
                           setBipVal(bipsList[index], widget.bipIndex);
