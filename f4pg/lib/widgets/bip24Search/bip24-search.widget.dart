@@ -57,7 +57,7 @@ class Bip24SearchWidget extends StatelessWidget {
         child: GridView(
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
+            crossAxisCount: 6,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
             // childAspectRatio: 1.5 //10 // 1.2
