@@ -323,7 +323,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                         /* not using TextFormField for now so I can utilize enabled */
                         // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
                         decoration: InputDecoration(
-                          border: UnderlineInputBorder(
+                          border: const UnderlineInputBorder(
                             borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
                           ),
                           labelText: 'bip ${widget.bipIndex}',
