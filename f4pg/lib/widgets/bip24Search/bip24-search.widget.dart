@@ -116,18 +116,21 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   }
 
   void showOverlay() {
-    final overlay = Overlay.of(context)!;
-    final renderBox = context.findRenderObject() as RenderBox;
-    final _size = renderBox.size;
+    final _overlay = Overlay.of(context)!;
+    final _renderBox = context.findRenderObject() as RenderBox;
+    final _size = _renderBox.size;
+    final _offset = _renderBox.localToGlobal(Offset.zero);
   
     entry = OverlayEntry(
       builder: (context) =>  Positioned(
+        top: _offset.dy,
+        left: _offset.dx,
         width: _size.width,
         child: _bipInputSearch(context)
       ), 
     );
 
-    overlay.insert(entry!);
+    _overlay.insert(entry!);
   }
 
   void toggleBipSearch() {
