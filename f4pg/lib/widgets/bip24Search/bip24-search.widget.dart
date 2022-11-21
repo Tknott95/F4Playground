@@ -218,7 +218,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       child: ElevatedButton( 
                 child: (widget.bipInputVal.toString() == null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
                 onPressed: () {
-                  print(widget.bipInputVal.toString);
+                  print(widget.bipInputVal.toString());
                 },
               ),
             
