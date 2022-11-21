@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
@@ -65,7 +66,7 @@ class Bip24SearchWidget extends StatelessWidget {
             /*
             * I am going to create bipSingle then use this to spawn modals of bipsearchsingle. BipSingle will be a locked input box or button. 
             * This will just be for a framewrok for a design to be built on. */
-            /* might be better to set bip24 length at top so it doesnt every time yet it isnt the biggest of deals, yet wasted computation */
+            /* might be better to set bip24 length at top so it doesnt every time yet it isnt the biggest of deals, yet wasted computation */            
             for (int i=0; i< bips24.length;/*24;*/ i++) BipSearchSingle(bipIndex: i),
             // for (int i=0; i< bips24.length;/*24;*/ i++) SizedBox(
             //   height: 10,
@@ -216,31 +217,33 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   Widget build(BuildContext context) {
     return Card(
       child: ElevatedButton( 
-        child: (widget.bipInputVal.toString() == null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
+        child: Row(
+          children: [
+            Text("bip-${widget.bipIndex}    "),
+            Text(widget.bipInputVal.toString()),
+          ],
+        ),
+        // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
         onPressed: () {
           print(widget.bipInputVal.toString());
 
-          showModalBottomSheet<void>(
-            // context and builder are
-            // required properties in this widget
+          showDialog(
             context: context,
-            builder: (BuildContext context) {
-              // we set up a container inside which
-              // we create center column and display text
-
-              // Returning SizedBox instead of a Container
-              return SizedBox(
-                height: 200,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
-                    ],
-                  ),
-                ),
-              );
-            },
+            // barrierDismissible: false,
+            builder: (_) => Container(
+              child: CupertinoAlertDialog(
+                // context and builder are
+                // required properties in this widget
+                // context: context,
+                // builder: (BuildContext context) {
+                  // we set up a container inside which
+                  // we create center column and display text
+                  // Returning SizedBox instead of a Container
+                  content: Material(
+                    child: _bipInputSearch(context),
+                  )
+              ),
+            ),
           );
         },
       ),
@@ -292,6 +295,67 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       //   ],
       // ),
     );
+   }
+
+   Widget _bipInputSearch(BuildContext context) {
+    return SizedBox(
+                      height: 400,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
+                            
+                            Column(
+                              children: [
+                                Text('${widget.bipInputVal}'),
+                                SizedBox(
+                                width: 100,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                                      child: TextField(
+                                        controller: txtController,
+                                        onChanged: (val) => searchBipList(val, widget.bipIndex),
+                                        /** !!! @NOTE 
+                                        * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
+                                        * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
+                                        **/
+                                        /* not using TextFormField for now so I can utilize enabled */
+                                        // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
+                                        decoration: InputDecoration(
+                                          border: UnderlineInputBorder(
+                                            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+                                          ),
+                                          labelText: 'bip ${widget.bipIndex}',
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  
+                                // Expanded(
+                                SizedBox(
+                                  height: 200, // constrain height
+                                  child: ListView.builder(
+                                    itemCount: bipsList.length,
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) => ListTile(
+                                      title: ElevatedButton(
+                                        child: Text(bipsList[index]),
+                                        onPressed: () { 
+                                          setBipVal(bipsList[index], widget.bipIndex);
+                                        },
+                            
+                                      ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+                                    ),
+                                  ),
+                                ),
+                            
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
    }
 }
 
