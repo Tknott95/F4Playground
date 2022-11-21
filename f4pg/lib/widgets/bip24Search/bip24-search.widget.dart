@@ -100,7 +100,7 @@ class BipSearchSingle extends StatefulWidget {
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
   OverlayEntry? entry;
-  final _focusNode = FocusNode();
+  // final _focusNode = FocusNode();
 
   List<String> staticBipsList = new File('./bips.txt').readAsLinesSync();
   List<String> bipsList = new File('./bips.txt').readAsLinesSync();
@@ -117,11 +117,11 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
    
     /* could just do it the way i do visibility with hide and show */
-    _focusNode.addListener(() {
-      if(_focusNode.hasFocus) {
-        showOverlay();
-      } else hideOverlay();
-    });
+    // _focusNode.addListener(() {
+    //   if(_focusNode.hasFocus) {
+    //     showOverlay();
+    //   } else hideOverlay();
+    // });
   }
 
   void showOverlay() {
