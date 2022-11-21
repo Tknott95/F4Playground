@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  modal_bottom_sheet: ^2.1.2
 
   flutter_test:
     sdk: flutter

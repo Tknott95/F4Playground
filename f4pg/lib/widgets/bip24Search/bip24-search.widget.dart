@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 /* NEEDS A DESIGN NOW THAT LOGIC IS DONE (rec page also has a wallName and password) */
 
@@ -59,7 +60,7 @@ class Bip24SearchWidget extends StatelessWidget {
             crossAxisCount: 4,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
-            childAspectRatio: 4 //10 // 1.2
+            childAspectRatio: 1 //10 // 1.2
           ),
           padding: EdgeInsets.zero,
           children: [
@@ -68,62 +69,9 @@ class Bip24SearchWidget extends StatelessWidget {
             * This will just be for a framewrok for a design to be built on. */
             /* might be better to set bip24 length at top so it doesnt every time yet it isnt the biggest of deals, yet wasted computation */            
             for (int i=0; i< bips24.length;/*24;*/ i++) BipSearchSingle(bipIndex: i),
-            // for (int i=0; i< bips24.length;/*24;*/ i++) SizedBox(
-            //   height: 10,
-            //   child: ElevatedButton( 
-            //     child: Text(bips24[i].toString()), 
-            //     onPressed: () {
-            //       print(bips24[i].toString());},
-            //   ),
-            // )
-
-            // for (int i=0; i<24; i++)  
-            //   Container(
-            //     child: TextFormField(
-            //     enabled: false,
-            //     initialValue: "$i"
-            //   )
-            // )
-
-            
-            // for (int i=0; i<24; i++)  BipSearchSingle(bipIndex: i),
-            // BipSearchSingle(bipIndex: 1),
-            // BipSearchSingle(bipIndex: 2),
-            // BipSearchSingle(bipIndex: 3),
-            // BipSearchSingle(bipIndex: 4),
           ],
         ),
       )
-      // Row(
-      //  mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [
-        //   BipSearchSingle(bipIndex: 1),
-        //   BipSearchSingle(bipIndex: 2),
-        //   BipSearchSingle(bipIndex: 3),
-        //   BipSearchSingle(bipIndex: 4),
-        // ],
-      // ),
-      // Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [
-      //     /* turn these into loops and make screen size approp */
-      //     BipSearchSingle(bipIndex: 5),
-      //     BipSearchSingle(bipIndex: 6),
-      //     BipSearchSingle(bipIndex: 7),
-      //     BipSearchSingle(bipIndex: 8),
-      //   ],
-      // )
-
-
-      // Padding(
-      //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      //     child: TextFormField(
-      //       decoration: const InputDecoration(
-      //         border: UnderlineInputBorder(),
-      //         labelText: 'bip 01',
-      //       ),
-      //     ),
-      //   ),
      ],
     );
     
@@ -134,13 +82,15 @@ class Bip24SearchWidget extends StatelessWidget {
 class BipSearchSingle extends StatefulWidget {
   final int bipIndex;
 
+
   String? bipInputVal;
   bool? isInputUnlocked = true;
 
   BipSearchSingle({required this.bipIndex, this.bipInputVal, this.isInputUnlocked});
 
   State<BipSearchSingle> createState() => _BipSearchSingleState();
-  
+  TextEditingController txtController = TextEditingController(text: '');
+
 
   // onInit() {
   //   this.isInputUnlocked = false;
@@ -152,13 +102,19 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   List<String> staticBipsList = new File('./bips.txt').readAsLinesSync();
   List<String> bipsList = new File('./bips.txt').readAsLinesSync();
 
-
+  bool showBipSearch = false;
   // var txtController = TextEditingController();
-  TextEditingController txtController = TextEditingController(text: '');
+  // TextEditingController txtController = TextEditingController(text: '');
 
 
   void initState() {
     // txtController = new TextEditingController(text: 'Initial value');
+  }
+
+  void toggleBipSearch() {
+    setState(() {
+      showBipSearch = true;
+    });
   }
 
 
@@ -166,7 +122,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   void setBipVal(String val, int bipIndex) {
     print("\n setting bip val ${val}");  
 
-    txtController = TextEditingController(text: val);
+    widget.txtController = TextEditingController(text: val);
       
     bips24[bipIndex] = val;
     print("\n $bips24");
@@ -215,91 +171,108 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ElevatedButton( 
-        child: Row(
+    return Container(
+      child: Card(
+        child: Column(
           children: [
-            Text("bip-${widget.bipIndex}    "),
-            Text(widget.bipInputVal.toString()),
+              Visibility(
+                visible: showBipSearch,
+                child: _bipInputSearch(context),
+              ),
+            ElevatedButton( 
+              child: Row(
+                children: [
+                  Text("bip-${widget.bipIndex}    "),
+                  Text(widget.bipInputVal.toString()),
+                 
+                ],
+              ),
+              // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
+              onPressed: () {
+                print(widget.bipInputVal.toString());
+
+                toggleBipSearch();
+                // showMaterialModalBottomSheet(
+                //   context: context,
+                //   builder: (context) => _bipInputSearch(context),
+                // );
+
+                // showDialog(
+                //   context: context,
+                //   // barrierDismissible: false,
+                //   builder: (_) => Container(
+                //     child: CupertinoAlertDialog(
+                //       // context and builder are
+                //       // required properties in this widget
+                //       // context: context,
+                //       // builder: (BuildContext context) {
+                //         // we set up a container inside which
+                //         // we create center column and display text
+                //         // Returning SizedBox instead of a Container
+                //         content: Material(
+                //           child: _bipInputSearch(context),
+                //         )
+                //     ),
+                //   ),
+                // );
+              },
+            ),
           ],
         ),
-        // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
-        onPressed: () {
-          print(widget.bipInputVal.toString());
+              
+        // child: Column(
+        //   children: [
+        //     Text('${widget.bipInputVal}'),
+        //     SizedBox(
+        //      width: 100,
+        //       child: Padding(
+        //         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        //           child: TextField(
+        //             controller: txtController,
+        //             onChanged: (val) => searchBipList(val, widget.bipIndex),
+        //             /** !!! @NOTE 
+        //             * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
+        //             * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
+        //             **/
+        //             /* not using TextFormField for now so I can utilize enabled */
+        //             // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
+        //             decoration: InputDecoration(
+        //               border: UnderlineInputBorder(
+        //                 borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+        //               ),
+        //               labelText: 'bip ${widget.bipIndex}',
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+              
+        //     // Expanded(
+        //     SizedBox(
+        //       height: 200, // constrain height
+        //       child: ListView.builder(
+        //         itemCount: bipsList.length,
+        //         shrinkWrap: true,
+        //         itemBuilder: (context, index) => ListTile(
+        //           title: ElevatedButton(
+        //             child: Text(bipsList[index]),
+        //             onPressed: () { 
+        //               setBipVal(bipsList[index], widget.bipIndex);
+        //             },
 
-          showDialog(
-            context: context,
-            // barrierDismissible: false,
-            builder: (_) => Container(
-              child: CupertinoAlertDialog(
-                // context and builder are
-                // required properties in this widget
-                // context: context,
-                // builder: (BuildContext context) {
-                  // we set up a container inside which
-                  // we create center column and display text
-                  // Returning SizedBox instead of a Container
-                  content: Material(
-                    child: _bipInputSearch(context),
-                  )
-              ),
-            ),
-          );
-        },
+        //           ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+        //         ),
+        //       ),
+        //     ),
+
+        //   ],
+        // ),
       ),
-            
-      // child: Column(
-      //   children: [
-      //     Text('${widget.bipInputVal}'),
-      //     SizedBox(
-      //      width: 100,
-      //       child: Padding(
-      //         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      //           child: TextField(
-      //             controller: txtController,
-      //             onChanged: (val) => searchBipList(val, widget.bipIndex),
-      //             /** !!! @NOTE 
-      //             * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
-      //             * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
-      //             **/
-      //             /* not using TextFormField for now so I can utilize enabled */
-      //             // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
-      //             decoration: InputDecoration(
-      //               border: UnderlineInputBorder(
-      //                 borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
-      //               ),
-      //               labelText: 'bip ${widget.bipIndex}',
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-            
-      //     // Expanded(
-      //     SizedBox(
-      //       height: 200, // constrain height
-      //       child: ListView.builder(
-      //         itemCount: bipsList.length,
-      //         shrinkWrap: true,
-      //         itemBuilder: (context, index) => ListTile(
-      //           title: ElevatedButton(
-      //             child: Text(bipsList[index]),
-      //             onPressed: () { 
-      //               setBipVal(bipsList[index], widget.bipIndex);
-      //             },
-
-      //           ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
-      //         ),
-      //       ),
-      //     ),
-
-      //   ],
-      // ),
     );
    }
 
    Widget _bipInputSearch(BuildContext context) {
-    return SizedBox(
-      height: 400,
+    return Expanded(
+      // height: 400,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -314,7 +287,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                       child: TextField(
-                        controller: txtController,
+                        controller: widget.txtController,
                         onChanged: (val) => searchBipList(val, widget.bipIndex),
                         /** !!! @NOTE 
                         * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
@@ -334,8 +307,9 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                   
                 // Expanded(
                 SizedBox(
-                  height: 200, // constrain height
+                  height: 100, // constrain height
                   child: ListView.builder(
+
                     itemCount: bipsList.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) => ListTile(
