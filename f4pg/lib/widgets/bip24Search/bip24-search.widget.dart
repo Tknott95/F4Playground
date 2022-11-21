@@ -16,12 +16,12 @@ var bips24 = {
  0: '',
  1: '',
  2: '',
- 3: '',
- 4: '',
- 5: '',
- 6: '',
- 7: '',
- 8: '',
+ 3: 'white rabbit',
+ 4: 'bob',
+ 5: 'wonderland',
+ 6: 'alice',
+ 7: 'ipsum',
+ 8: 'lorem',
  9: '',
  10: '',
  11: '',
@@ -50,9 +50,10 @@ class Bip24SearchWidget extends StatelessWidget {
       /* create row type system with dynamic flex box type behaviour and use for loop here after bip search filter */
       /* I want to lock the input with a lock to lock bip or change it for rec (this or use breadcrumbs after input) */
 
-      SizedBox(
-        height: 500,
+      Expanded(
+        // height: 500,
         child: GridView(
+          shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             mainAxisSpacing: 1,
@@ -61,7 +62,20 @@ class Bip24SearchWidget extends StatelessWidget {
           ),
           padding: EdgeInsets.zero,
           children: [
-            for (int i=0; i<24; i++) BipSearchSingle(bipIndex: i),
+            /*
+            * I am going to create bipSingle then use this to spawn modals of bipsearchsingle. BipSingle will be a locked input box or button. 
+            * This will just be for a framewrok for a design to be built on. */
+            /* might be better to set bip24 length at top so it doesnt every time yet it isnt the biggest of deals, yet wasted computation */
+            for (int i=0; i< bips24.length;/*24;*/ i++) BipSearchSingle(bipIndex: i),
+            // for (int i=0; i< bips24.length;/*24;*/ i++) SizedBox(
+            //   height: 10,
+            //   child: ElevatedButton( 
+            //     child: Text(bips24[i].toString()), 
+            //     onPressed: () {
+            //       print(bips24[i].toString());},
+            //   ),
+            // )
+
             // for (int i=0; i<24; i++)  
             //   Container(
             //     child: TextFormField(
@@ -115,6 +129,7 @@ class Bip24SearchWidget extends StatelessWidget {
   }
 }
 
+
 class BipSearchSingle extends StatefulWidget {
   final int bipIndex;
 
@@ -156,6 +171,9 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     print("\n $bips24");
 
     setState(() {
+      bips24[bipIndex] = val;
+      print("\n $bips24");
+
       widget.isInputUnlocked = false;
 
       widget.bipInputVal = val;
@@ -197,52 +215,59 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Column(
-        children: [
-          Text('${widget.bipInputVal}'),
-          SizedBox(
-           width: 100,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: TextField(
-                  controller: txtController,
-                  onChanged: (val) => searchBipList(val, widget.bipIndex),
-                  /** !!! @NOTE 
-                  * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
-                  * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
-                  **/
-                  /* not using TextFormField for now so I can utilize enabled */
-                  // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
-                  decoration: InputDecoration(
-                    border: UnderlineInputBorder(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
-                    ),
-                    labelText: 'bip ${widget.bipIndex}',
-                  ),
-                ),
+      child: ElevatedButton( 
+                child: (widget.bipInputVal.toString() == null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
+                onPressed: () {
+                  print(widget.bipInputVal.toString);
+                },
               ),
-            ),
             
-          // Expanded(
-          SizedBox(
-            height: 200, // constrain height
-            child: ListView.builder(
-              itemCount: bipsList.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) => ListTile(
-                title: ElevatedButton(
-                  child: Text(bipsList[index]),
-                  onPressed: () { 
-                    setBipVal(bipsList[index], widget.bipIndex);
-                  },
+      // child: Column(
+      //   children: [
+      //     Text('${widget.bipInputVal}'),
+      //     SizedBox(
+      //      width: 100,
+      //       child: Padding(
+      //         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+      //           child: TextField(
+      //             controller: txtController,
+      //             onChanged: (val) => searchBipList(val, widget.bipIndex),
+      //             /** !!! @NOTE 
+      //             * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
+      //             * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
+      //             **/
+      //             /* not using TextFormField for now so I can utilize enabled */
+      //             // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
+      //             decoration: InputDecoration(
+      //               border: UnderlineInputBorder(
+      //                 borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+      //               ),
+      //               labelText: 'bip ${widget.bipIndex}',
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+            
+      //     // Expanded(
+      //     SizedBox(
+      //       height: 200, // constrain height
+      //       child: ListView.builder(
+      //         itemCount: bipsList.length,
+      //         shrinkWrap: true,
+      //         itemBuilder: (context, index) => ListTile(
+      //           title: ElevatedButton(
+      //             child: Text(bipsList[index]),
+      //             onPressed: () { 
+      //               setBipVal(bipsList[index], widget.bipIndex);
+      //             },
 
-                ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
-              ),
-            ),
-          ),
+      //           ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+      //         ),
+      //       ),
+      //     ),
 
-        ],
-      ),
+      //   ],
+      // ),
     );
    }
 }
