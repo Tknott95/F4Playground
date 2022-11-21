@@ -147,7 +147,6 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
   void setBipVal(String val, int bipIndex) {
-    hideOverlay();
     print("\n setting bip val ${val}");  
 
     widget.txtController = TextEditingController(text: val);
@@ -350,7 +349,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                           child: Text(bipsList[index]),
                           onPressed: () { 
                             setBipVal(bipsList[index], widget.bipIndex);
-                            // hideOverlay();
+                            hideOverlay();
                           },
               
                         ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
