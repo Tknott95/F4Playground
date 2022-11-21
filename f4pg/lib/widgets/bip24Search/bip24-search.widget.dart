@@ -199,13 +199,13 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                 //   builder: (context) => _bipInputSearch(context),
                 // );
 
-                // showDialog(
-                //   context: context,
-                //   // barrierDismissible: false,
-                //   builder: (context) => Container(
-                //     child:  Material( child: _bipInputSearch(context)),
-                //   ),
-                // );
+                showMaterialModalBottomSheet(
+                  context: context,
+                  // barrierDismissible: false,
+                  builder: (context) => Container(
+                    child:  Material( child: _bipInputSearch(context)),
+                  ),
+                );
               },
             ),
           ],
