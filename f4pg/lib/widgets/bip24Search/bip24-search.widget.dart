@@ -60,7 +60,7 @@ class Bip24SearchWidget extends StatelessWidget {
             crossAxisCount: 6,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
-            childAspectRatio: 1.5 //10 // 1.2
+            childAspectRatio: 5.5 //10 // 1.2
           ),
           padding: EdgeInsets.zero,
           children: [
@@ -100,6 +100,7 @@ class BipSearchSingle extends StatefulWidget {
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
   OverlayEntry? entry;
+  final _focusNode = FocusNode();
 
   List<String> staticBipsList = new File('./bips.txt').readAsLinesSync();
   List<String> bipsList = new File('./bips.txt').readAsLinesSync();
@@ -112,7 +113,15 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   void initState() {
     // txtController = new TextEditingController(text: 'Initial value');
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) { showOverlay(); });
+    // WidgetsBinding.instance!.addPostFrameCallback((_) { showOverlay(); });
+
+   
+    /* could just do it the way i do visibility with hide and show */
+    _focusNode.addListener(() {
+      if(_focusNode.hasFocus) {
+        showOverlay();
+      } else hideOverlay();
+    });
   }
 
   void showOverlay() {
@@ -124,7 +133,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
     entry = OverlayEntry(
       builder: (context) =>  Positioned(
         top: _offset.dy, /*  + _size.height */
-        left: _offset.dx,
+        left: _offset.dx + 50,
         width: _size.width,
         child: _bipInputSearch(context)
       ), 
@@ -204,49 +213,53 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       child: Card(
         child: Column(
           children: [
-            ExpansionTile(
-              title: Row(
-                children: [
-                  Text("bip-${widget.bipIndex}    "),
-                  Text(widget.bipInputVal.toString()),
-                ],
-              ),
+            // ExpansionTile(
+            //   title: Row(
+            //     children: [
+            //       Text("bip-${widget.bipIndex}    "),
+            //       Text(widget.bipInputVal.toString()),
+            //     ],
+            //   ),
             
-            children: [
-              SizedBox(child:  _bipInputSearch(context))
-              ],
-            )
+            // children: [
+            //   SizedBox(child:  _bipInputSearch(context))
+            //   ],
+            // )
             // Visibility(
             //   visible: showBipSearch,
             //   child: _bipInputSearch(context),
             // ),
-            // ElevatedButton( 
-            //   child: Row(
-            //     children: [
-            //       Text("bip-${widget.bipIndex}    "),
-            //       Text(widget.bipInputVal.toString()),
+            MaterialButton( 
+              // color: Color.fromARGB(126, 145, 117, 117),
+              
+              child: Row(
+                children: [
+                  Text("bip-${widget.bipIndex}    "),
+                  Text(widget.bipInputVal.toString()),
                  
-            //     ],
-            //   ),
-            //   // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
-            //   onPressed: () {
-            //     print(widget.bipInputVal.toString());
+                ],
+              ),
+              // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
+              onPressed: () {
+                print(widget.bipInputVal.toString());
 
-            //     toggleBipSearch();
-            //     // showMaterialModalBottomSheet(
-            //     //   context: context,
-            //     //   builder: (context) => _bipInputSearch(context),
-            //     // );
+                showOverlay();
 
-            //     // showMaterialModalBottomSheet(
-            //     //   context: context,
-            //     //   // barrierDismissible: false,
-            //     //   builder: (context) => SizedBox( height: 400,
-            //     //     child:  Material( child: _bipInputSearch(context)),
-            //     //   ),
-            //     // );
-            //   },
-            // ),
+                // toggleBipSearch();
+                // showMaterialModalBottomSheet(
+                //   context: context,
+                //   builder: (context) => _bipInputSearch(context),
+                // );
+
+                // showMaterialModalBottomSheet(
+                //   context: context,
+                //   // barrierDismissible: false,
+                //   builder: (context) => SizedBox( height: 400,
+                //     child:  Material( child: _bipInputSearch(context)),
+                //   ),
+                // );
+              },
+            ),
           ],
         ),
               
