@@ -100,6 +100,8 @@ class BipSearchSingle extends StatefulWidget {
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
   OverlayEntry? entry;
+
+  bool isOverlayShowing = false;
   // final _focusNode = FocusNode();
 
   List<String> staticBipsList = new File('./bips.txt').readAsLinesSync();
@@ -125,6 +127,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   }
 
   void showOverlay() {
+    isOverlayShowing = true;
     final _overlay = Overlay.of(context)!;
     final _renderBox = context.findRenderObject() as RenderBox;
     final _size = _renderBox.size;
@@ -143,6 +146,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   }
 
   void hideOverlay() {
+    isOverlayShowing = false;
     entry?.remove();
     entry = null;
   }
@@ -243,7 +247,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
               onPressed: () {
                 print(widget.bipInputVal.toString());
 
-                showOverlay();
+                isOverlayShowing ? hideOverlay() : showOverlay();
 
                 // toggleBipSearch();
                 // showMaterialModalBottomSheet(
@@ -315,6 +319,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
    Widget _bipInputSearch(BuildContext context) {
     return Material(
+      color: const Color(0xFF0E3311).withOpacity(0.5),
       // height: 400,
       child: SizedBox(
         height: 300,
