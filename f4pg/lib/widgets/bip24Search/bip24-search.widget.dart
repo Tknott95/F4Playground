@@ -16,12 +16,12 @@ var bips24 = {
  0: '',
  1: '',
  2: '',
- 3: 'white rabbit',
- 4: 'bob',
- 5: 'wonderland',
- 6: 'alice',
- 7: 'ipsum',
- 8: 'lorem',
+ 3: '',
+ 4: '',
+ 5: '',
+ 6: '',
+ 7: '',
+ 8: '',
  9: '',
  10: '',
  11: '',
@@ -55,10 +55,10 @@ class Bip24SearchWidget extends StatelessWidget {
         child: GridView(
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+            crossAxisCount: 4,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
-            childAspectRatio: 1.2 //10 // 1.2
+            childAspectRatio: 4 //10 // 1.2
           ),
           padding: EdgeInsets.zero,
           children: [
@@ -216,11 +216,34 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   Widget build(BuildContext context) {
     return Card(
       child: ElevatedButton( 
-                child: (widget.bipInputVal.toString() == null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
-                onPressed: () {
-                  print(widget.bipInputVal.toString());
-                },
-              ),
+        child: (widget.bipInputVal.toString() == null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
+        onPressed: () {
+          print(widget.bipInputVal.toString());
+
+          showModalBottomSheet<void>(
+            // context and builder are
+            // required properties in this widget
+            context: context,
+            builder: (BuildContext context) {
+              // we set up a container inside which
+              // we create center column and display text
+
+              // Returning SizedBox instead of a Container
+              return SizedBox(
+                height: 200,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
             
       // child: Column(
       //   children: [
