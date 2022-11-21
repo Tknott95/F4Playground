@@ -54,7 +54,7 @@ class Bip24SearchWidget extends StatelessWidget {
         // height: 500,
         child: GridView(
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
@@ -214,7 +214,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Card(
       child: ElevatedButton( 
                 child: (widget.bipInputVal.toString() == null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
                 onPressed: () {
