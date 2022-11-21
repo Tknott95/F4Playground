@@ -299,69 +299,62 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
    Widget _bipInputSearch(BuildContext context) {
     return SizedBox(
-                      height: 400,
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
-                            
-                            Column(
-                              children: [
-                                Text('${widget.bipInputVal}'),
-                                SizedBox(
-                                width: 100,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                                      child: TextField(
-                                        controller: txtController,
-                                        onChanged: (val) => searchBipList(val, widget.bipIndex),
-                                        /** !!! @NOTE 
-                                        * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
-                                        * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
-                                        **/
-                                        /* not using TextFormField for now so I can utilize enabled */
-                                        // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
-                                        decoration: InputDecoration(
-                                          border: UnderlineInputBorder(
-                                            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
-                                          ),
-                                          labelText: 'bip ${widget.bipIndex}',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  
-                                // Expanded(
-                                SizedBox(
-                                  height: 200, // constrain height
-                                  child: ListView.builder(
-                                    itemCount: bipsList.length,
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => ListTile(
-                                      title: ElevatedButton(
-                                        child: Text(bipsList[index]),
-                                        onPressed: () { 
-                                          setBipVal(bipsList[index], widget.bipIndex);
-                                        },
-                            
-                                      ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
-                                    ),
-                                  ),
-                                ),
-                            
-                              ],
-                            ),
-                          ],
+      height: 400,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
+            
+            Column(
+              children: [
+                Text('${widget.bipInputVal}'),
+                SizedBox(
+                width: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                      child: TextField(
+                        controller: txtController,
+                        onChanged: (val) => searchBipList(val, widget.bipIndex),
+                        /** !!! @NOTE 
+                        * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
+                        * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
+                        **/
+                        /* not using TextFormField for now so I can utilize enabled */
+                        // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+                          ),
+                          labelText: 'bip ${widget.bipIndex}',
                         ),
                       ),
-                    );
+                    ),
+                  ),
+                  
+                // Expanded(
+                SizedBox(
+                  height: 200, // constrain height
+                  child: ListView.builder(
+                    itemCount: bipsList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) => ListTile(
+                      title: ElevatedButton(
+                        child: Text(bipsList[index]),
+                        onPressed: () { 
+                          setBipVal(bipsList[index], widget.bipIndex);
+                        },
+            
+                      ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+                    ),
+                  ),
+                ),
+            
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
    }
-}
-
-
-class BipStringModel{
-  String? val;
-
-  BipStringModel(this.val);
 }
