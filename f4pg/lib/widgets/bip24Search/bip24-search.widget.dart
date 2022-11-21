@@ -60,7 +60,7 @@ class Bip24SearchWidget extends StatelessWidget {
             crossAxisCount: 6,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
-            // childAspectRatio: 1.5 //10 // 1.2
+            childAspectRatio: 1.5 //10 // 1.2
           ),
           padding: EdgeInsets.zero,
           children: [
@@ -177,37 +177,49 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       child: Card(
         child: Column(
           children: [
-              Visibility(
-                visible: showBipSearch,
-                child: _bipInputSearch(context),
-              ),
-            ElevatedButton( 
-              child: Row(
+            ExpansionTile(
+              title: Row(
                 children: [
                   Text("bip-${widget.bipIndex}    "),
                   Text(widget.bipInputVal.toString()),
-                 
                 ],
               ),
-              // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
-              onPressed: () {
-                print(widget.bipInputVal.toString());
+            
+            children: [
+              SizedBox(child:  _bipInputSearch(context))
+              ],
+            )
+            // Visibility(
+            //   visible: showBipSearch,
+            //   child: _bipInputSearch(context),
+            // ),
+            // ElevatedButton( 
+            //   child: Row(
+            //     children: [
+            //       Text("bip-${widget.bipIndex}    "),
+            //       Text(widget.bipInputVal.toString()),
+                 
+            //     ],
+            //   ),
+            //   // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
+            //   onPressed: () {
+            //     print(widget.bipInputVal.toString());
 
-                toggleBipSearch();
-                // showMaterialModalBottomSheet(
-                //   context: context,
-                //   builder: (context) => _bipInputSearch(context),
-                // );
+            //     toggleBipSearch();
+            //     // showMaterialModalBottomSheet(
+            //     //   context: context,
+            //     //   builder: (context) => _bipInputSearch(context),
+            //     // );
 
-                // showMaterialModalBottomSheet(
-                //   context: context,
-                //   // barrierDismissible: false,
-                //   builder: (context) => SizedBox( height: 400,
-                //     child:  Material( child: _bipInputSearch(context)),
-                //   ),
-                // );
-              },
-            ),
+            //     // showMaterialModalBottomSheet(
+            //     //   context: context,
+            //     //   // barrierDismissible: false,
+            //     //   builder: (context) => SizedBox( height: 400,
+            //     //     child:  Material( child: _bipInputSearch(context)),
+            //     //   ),
+            //     // );
+            //   },
+            // ),
           ],
         ),
               
