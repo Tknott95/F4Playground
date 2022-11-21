@@ -83,6 +83,7 @@ class BipSearchSingle extends StatefulWidget {
   final int bipIndex;
 
 
+
   String? bipInputVal;
   bool? isInputUnlocked = true;
 
@@ -98,6 +99,7 @@ class BipSearchSingle extends StatefulWidget {
 }
 
 class _BipSearchSingleState extends State<BipSearchSingle> {
+  OverlayEntry? entry;
 
   List<String> staticBipsList = new File('./bips.txt').readAsLinesSync();
   List<String> bipsList = new File('./bips.txt').readAsLinesSync();
@@ -109,6 +111,23 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
   void initState() {
     // txtController = new TextEditingController(text: 'Initial value');
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) { showOverlay(); });
+  }
+
+  void showOverlay() {
+    final overlay = Overlay.of(context)!;
+    final renderBox = context.findRenderObject() as RenderBox;
+    final _size = renderBox.size;
+  
+    entry = OverlayEntry(
+      builder: (context) =>  Positioned(
+        width: _size.width,
+        child: _bipInputSearch(context)
+      ), 
+    );
+
+    overlay.insert(entry!);
   }
 
   void toggleBipSearch() {
@@ -274,62 +293,65 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
    }
 
    Widget _bipInputSearch(BuildContext context) {
-    return Expanded(
+    return Material(
       // height: 400,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
-            
-            Column(
-              children: [
-                Text('${widget.bipInputVal}'),
-                SizedBox(
-                width: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                      child: TextField(
-                        controller: widget.txtController,
-                        onChanged: (val) => searchBipList(val, widget.bipIndex),
-                        /** !!! @NOTE 
-                        * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
-                        * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
-                        **/
-                        /* not using TextFormField for now so I can utilize enabled */
-                        // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
-                        decoration: InputDecoration(
-                          border: const UnderlineInputBorder(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+      child: SizedBox(
+        height: 400,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('BIP TOOL HERE - ${widget.bipInputVal.toString()}'),
+              
+              Column(
+                children: [
+                  Text('${widget.bipInputVal}'),
+                  SizedBox(
+                  width: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                        child: TextField(
+                          controller: widget.txtController,
+                          onChanged: (val) => searchBipList(val, widget.bipIndex),
+                          /** !!! @NOTE 
+                          * COULD PASS IN widget.INPUT_VAL and then use this to bind into a locked input box 
+                          * BELOW I WILL CLICK ON WHICH bip and then i will set the widget var to such which binds to the input. The bip24 is what will become a json payload with a few other params (this is already done in my wallet)
+                          **/
+                          /* not using TextFormField for now so I can utilize enabled */
+                          // enabled: widget.isInputUnlocked, /* add lock with bool for this so you can only edit one at a time */
+                          decoration: InputDecoration(
+                            border: const UnderlineInputBorder(
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0))
+                            ),
+                            labelText: 'bip ${widget.bipIndex}',
                           ),
-                          labelText: 'bip ${widget.bipIndex}',
                         ),
                       ),
                     ),
-                  ),
-                  
-                // Expanded(
-                SizedBox(
-                  height: 100, // constrain height
-                  child: ListView.builder(
+                    
+                  // Expanded(
+                  SizedBox(
+                    height: 100, // constrain height
+                    child: ListView.builder(
 
-                    itemCount: bipsList.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => ListTile(
-                      title: MaterialButton(
-                        child: Text(bipsList[index]),
-                        onPressed: () { 
-                          setBipVal(bipsList[index], widget.bipIndex);
-                        },
-            
-                      ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+                      itemCount: bipsList.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => ListTile(
+                        title: MaterialButton(
+                          child: Text(bipsList[index]),
+                          onPressed: () { 
+                            setBipVal(bipsList[index], widget.bipIndex);
+                          },
+              
+                        ), /* button then onClick have a function which sets widget.inputBipVal or something to that item then it binds */
+                      ),
                     ),
                   ),
-                ),
-            
-              ],
-            ),
-          ],
+              
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
