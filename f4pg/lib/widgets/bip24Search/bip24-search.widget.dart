@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+/* might as well make a full wallet rec tool here, or just bring this in now */
+
 /* NEEDS A DESIGN NOW THAT LOGIC IS DONE (rec page also has a wallName and password) */
 
 /* this single nested widget tucked in could always be a locked input (type of render of the bip) to box spawning a modal  */
