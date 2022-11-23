@@ -4,7 +4,6 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 /* might as well make a full wallet rec tool here, or just bring this in now */
 
