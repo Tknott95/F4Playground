@@ -43,6 +43,13 @@ var bips24 = {
  23: '',
 }; /* clear this after rec, you dont want such data persisting */
  
+
+/* 
+* @NOTE - could always slap a bool at top of isOverlayOpened 
+* and if one spawns set it to true. When remove set to false.
+* then instead of rmv on click outside just only allow one at a time.
+* this can be decided later
+*/
 class Bip24SearchWidget extends StatelessWidget {
 
   @override
@@ -137,8 +144,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
   
     entry = OverlayEntry(
       builder: (context) =>  Positioned(
-        top: _offset.dy, /*  + _size.height */
-        left: _offset.dx + 50,
+        top: _offset.dy - 10, /*  + _size.height */
+        left: _offset.dx,
         width: _size.width,
         child: _bipInputSearch(context)
       ), 
@@ -321,7 +328,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
    Widget _bipInputSearch(BuildContext context) {
     return Material(
-      color: const Color(0xFF0E3311).withOpacity(0.5),
+      // color: const Color(0xFF0E3311).withOpacity(0.5),
       // height: 400,
       child: SizedBox(
         height: 300,
