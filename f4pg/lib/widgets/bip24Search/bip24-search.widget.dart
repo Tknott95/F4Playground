@@ -56,34 +56,37 @@ class Bip24SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-     crossAxisAlignment: CrossAxisAlignment.center,
-     children: [
-      Text("bip24SearchWidget"),
-      /* create row type system with dynamic flex box type behaviour and use for loop here after bip search filter */
-      /* I want to lock the input with a lock to lock bip or change it for rec (this or use breadcrumbs after input) */
+    return Card(
+       color: const Color.fromARGB(200, 1, 1, 1),
+       child: Column(
+       crossAxisAlignment: CrossAxisAlignment.center,
+       children: [
+        Text("bip24SearchWidget"),
+        /* create row type system with dynamic flex box type behaviour and use for loop here after bip search filter */
+        /* I want to lock the input with a lock to lock bip or change it for rec (this or use breadcrumbs after input) */
 
-      Expanded(
-        // height: 500,
-        child: GridView(
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 6,
-            mainAxisSpacing: 1,
-            crossAxisSpacing: 1,
-            childAspectRatio: 5.5 //10 // 1.2
+        Expanded(
+          // height: 500,
+          child: GridView(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 6,
+              mainAxisSpacing: 1,
+              crossAxisSpacing: 1,
+              childAspectRatio: 5.5 //10 // 1.2
+            ),
+            padding: EdgeInsets.zero,
+            children: [
+              /*
+              * I am going to create bipSingle then use this to spawn modals of bipsearchsingle. BipSingle will be a locked input box or button. 
+              * This will just be for a framewrok for a design to be built on. */
+              /* might be better to set bip24 length at top so it doesnt every time yet it isnt the biggest of deals, yet wasted computation */            
+              for (int i=0; i< bips24.length;/*24;*/ i++) BipSearchSingle(bipIndex: i),
+            ],
           ),
-          padding: EdgeInsets.zero,
-          children: [
-            /*
-            * I am going to create bipSingle then use this to spawn modals of bipsearchsingle. BipSingle will be a locked input box or button. 
-            * This will just be for a framewrok for a design to be built on. */
-            /* might be better to set bip24 length at top so it doesnt every time yet it isnt the biggest of deals, yet wasted computation */            
-            for (int i=0; i< bips24.length;/*24;*/ i++) BipSearchSingle(bipIndex: i),
-          ],
-        ),
-      )
-     ],
+        )
+       ],
+      ),
     );
     
   }

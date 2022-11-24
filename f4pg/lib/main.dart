@@ -1,6 +1,33 @@
 import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
+
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+ GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell');
+
+/* ROUTING */
+final GoRouter _router = GoRouter(
+  navigatorKey: _rootNavigatorKey,
+  initialLocation: '/home',
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/home',
+      name: 'home',
+      builder: (BuildContext context, GoRouterState state) => Bip24SearchWidget()
+    )
+    /* need to add a wraper for nesting in, a nav bar */
+    // ShellRoute(
+    //   navigatorKey: _shellNavigatorKey,
+    //   build
+    // )
+  ]
+);
+
+/* MAIN */
 void main() {
   runApp(const MyApp());
 }
@@ -8,42 +35,53 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'f4pg',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'f4PG - Many pg apps in one.'),
-    );
-  }
+  @override 
+  Widget build(BuildContext context) => MaterialApp.router(
+    routeInformationProvider: _router.routeInformationProvider,
+    routeInformationParser: _router.routeInformationParser,
+    routerDelegate: _router.routerDelegate,
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    )
+  );
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'f4pg',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: const MyHomePage(title: 'f4PG - Many pg apps in one.'),
+//     );
+//   }
+// }
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
+//   final String title;
 
-class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Bip24SearchWidget(),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(widget.title),
+//       ),
+//       body: Center(
+//         child: Bip24SearchWidget(),
+//       ),
+//       // floatingActionButton: FloatingActionButton(
+//       //   onPressed: _incrementCounter,
+//       //   tooltip: 'Increment',
+//       //   child: const Icon(Icons.add),
+//       // ), // This trailing comma makes auto-formatting nicer for build methods.
+//     );
+//   }
+// }
