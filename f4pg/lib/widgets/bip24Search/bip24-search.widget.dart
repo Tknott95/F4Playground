@@ -15,6 +15,8 @@ import 'dart:io';
 * Each input brings up the modal up what is already coded to sleect the value via query unitl a design.
 */
 
+/* bring into other app, maybe make a page on here for logging in and wrap finished array in a momentary provider before sending payload from the next screen. THEN I CLEAR THE GLOBAL!!!! */
+
 var bips24 = {
  0: '',
  1: '',
