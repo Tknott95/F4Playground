@@ -16,6 +16,7 @@ import 'dart:io';
 */
 
 /* bring into other app, maybe make a page on here for logging in and wrap finished array in a momentary provider before sending payload from the next screen. THEN I CLEAR THE GLOBAL!!!! */
+/* i will play wiht this in the pg app for fun, i do want a modularized form from the bip rec so using a global is the only way. I just need to clean it after, set to null. */
 
 var bips24 = {
  0: '',
