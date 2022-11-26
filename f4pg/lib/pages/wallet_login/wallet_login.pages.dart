@@ -12,6 +12,11 @@ class WalletLoginPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Text('wallet login playground'),
+            ),
+ 
             SizedBox(
               width: 200,
               child: TextFormField(
@@ -19,7 +24,7 @@ class WalletLoginPage extends StatelessWidget {
                   border: UnderlineInputBorder(),
                   labelText: 'Enter your wallet name',
                 ),
-                initialValue: 'wallet name',
+                // initialValue: 'wallet name',
               ),
             ),
             SizedBox(
@@ -33,7 +38,7 @@ class WalletLoginPage extends StatelessWidget {
                   border: UnderlineInputBorder(),
                   labelText: 'Enter your passowrd',
                 ),
-                initialValue: 'wallet password',
+                // initialValue: 'wallet password',
               ),
             ),
 
