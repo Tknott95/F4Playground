@@ -7,3 +7,13 @@
  -
  -
  
+
+ - I NEED TO CLEAN MY ctrls - (txtctrls) https://docs.flutter.dev/cookbook/forms/text-field-changes
+
+ @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    myController.dispose();
+    super.dispose();
+  }
