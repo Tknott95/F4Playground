@@ -7,7 +7,11 @@ class WalletLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child:  Bip24SearchWidget()
+      child:  Column(
+        children: [
+          Bip24SearchWidget(),
+        ],
+      )
     );
   }
 }
