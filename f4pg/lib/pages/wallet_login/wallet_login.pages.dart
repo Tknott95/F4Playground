@@ -15,8 +15,8 @@ class WalletLoginPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(25.0),
+            const Padding(
+              padding: EdgeInsets.all(25.0),
               child: Text('wallet login playground'),
             ),
  
