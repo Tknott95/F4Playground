@@ -15,6 +15,10 @@ class WalletLoginPage extends StatelessWidget {
             SizedBox(
               width: 200,
               child: TextFormField(
+                 decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Enter your wallet name',
+                ),
                 initialValue: 'wallet name',
               ),
             ),
@@ -25,6 +29,10 @@ class WalletLoginPage extends StatelessWidget {
             SizedBox(
               width: 200,
               child: TextFormField(
+                  decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Enter your passowrd',
+                ),
                 initialValue: 'wallet password',
               ),
             ),
