@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class WalletLoginPage extends StatelessWidget {
-  
+
+  final wallName = TextEditingController();  
+  final wallPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,6 +27,7 @@ class WalletLoginPage extends StatelessWidget {
                   border: UnderlineInputBorder(),
                   labelText: 'Enter your wallet name',
                 ),
+                controller: wallName,
                 // initialValue: 'wallet name',
               ),
             ),
@@ -48,7 +52,7 @@ class WalletLoginPage extends StatelessWidget {
               child: MaterialButton(
                 child: Text('recover wallet'),
                 onPressed: () {
-                  print('fire at node');
+                  print('fire ${wallName.text} at node');
                 },
               ),
             ),
