@@ -1,4 +1,5 @@
 import 'package:f4pg/pages/wallet_login/wallet_login.pages.dart';
+import 'package:f4pg/providers/wallet.provider.dart';
 import 'package:f4pg/providers/wallet_login.provider.dart';
 import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
     providers: [
       ChangeNotifierProvider(
         create: ((context) => WalletLoginProvider()), 
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => WalletProvider()), 
       )
     ],
     child: MaterialApp.router(
