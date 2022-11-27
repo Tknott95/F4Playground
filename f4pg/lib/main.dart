@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) => MultiProvider(
+    /* @TODO - possibly try to nest my wallet login provder to just that page */
     providers: [
       ChangeNotifierProvider(
         create: ((context) => ThemeProvider()),

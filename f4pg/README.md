@@ -13,6 +13,7 @@
  - I can pull some old reduntant code now that providers are in.
  - A Custom node widget which sets the node to be fired at via provider.
  - Fetch /wallets and map all logged in wallets (just map id - put the first to active or nest a type/ add another var outside of such encapsulation) to a provider/global.
+ - possibly try to nest my wallet login provder to just that page
 
  @DOING
  - setting up theming
