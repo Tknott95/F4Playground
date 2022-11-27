@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
+/* possibly will change this name (Operations Provider) */
+
 /* refactor this into a type */
-class WalletLoginProvider extends ChangeNotifier {
+class OpsProvider extends ChangeNotifier {
   List<String> _bips24Keys = [];
 
-  /* not going to throw the name or password here
-  * this will ble cleaned if auth is passed. 
-  * If not vals will stay for dynamism 
-  */
+  /* not going to throw the name or password here */
+  /* this will ble cleaned if auth is passed. If not vals will stay for dynamism *.
 
   List<String> get getBips24Keys => _bips24Keys;
 
