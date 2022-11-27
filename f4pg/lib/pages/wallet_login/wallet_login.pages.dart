@@ -1,6 +1,10 @@
+import 'package:f4pg/providers/wallet_login.provider.dart';
 import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+
+
 
 // import 'package:provider/provider.dart';
 
@@ -12,6 +16,12 @@ class WalletLoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    List<String> getBipsTest() {
+      List<String> _allBips = Provider.of<WalletLoginProvider>(context, listen: false).getBips24Keys;
+      return _allBips;
+    }
+
     return Material(
       child: Card(
         // color: const Color.fromARGB(200, 1, 1, 1),
@@ -57,6 +67,7 @@ class WalletLoginPage extends StatelessWidget {
                 child: Text('recover wallet'),
                 onPressed: () {
                   print('fire ${wallNameCtrl.text} at node');
+                  print('\n bip24s firing ${getBipsTest()}');
                 },
               ),
             ),

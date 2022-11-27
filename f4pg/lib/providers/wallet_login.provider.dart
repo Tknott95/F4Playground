@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 class WalletLoginProvider extends ChangeNotifier {
   List<String> _bips24Keys = [];
 
+  /* not going to throw the name or password here */
+  /* this will ble cleaned if auth is passed. If not vals will stay for dynamism *.
+
   List<String> get getBips24Keys => _bips24Keys;
 
   void setBip24Keys(List<String> bips24Keys) {
