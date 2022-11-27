@@ -1,9 +1,14 @@
 import 'dart:convert';
 import 'dart:ffi';
 
+import 'package:f4pg/providers/wallet_login.provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
+
+import 'package:provider/provider.dart';
+
+
 
 /* might as well make a full wallet rec tool here, or just bring this in now */
 
@@ -211,6 +216,8 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
       bips24.forEach((key, value) { tempListForNow[key] = value;});
 
       print(tempListForNow);
+
+      Provider.of<WalletLoginProvider>(context, listen: false).setBip24Keys(tempListForNow);
 
       var tempJson = jsonEncode(tempListForNow);
       print(tempJson);
