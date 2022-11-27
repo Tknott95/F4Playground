@@ -18,6 +18,12 @@ import 'dart:io';
 /* bring into other app, maybe make a page on here for logging in and wrap finished array in a momentary provider before sending payload from the next screen. THEN I CLEAR THE GLOBAL!!!! */
 /* i will play wiht this in the pg app for fun, i do want a modularized form from the bip rec so using a global is the only way. I just need to clean it after, set to null. */
 
+/* setting up providers now - DELETE THIS
+will be using providers for escaping this enscapulation to a
+ layer up for now.
+the packaged payload to hit the api with will be sent via one layer up. 
+*/
+
 var bips24 = {
  0: '',
  1: '',
@@ -254,7 +260,6 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                 children: [
                   Text("bip-${widget.bipIndex}    "),
                   Text(widget.bipInputVal.toString()),
-                 
                 ],
               ),
               // (widget.bipInputVal.toString() != null) ? Text(widget.bipInputVal.toString()) : Text('enter bip-${widget.bipIndex}'), 
