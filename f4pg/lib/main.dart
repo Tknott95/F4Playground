@@ -1,5 +1,6 @@
 import 'package:f4pg/pages/wallet_login/wallet_login.pages.dart';
 import 'package:f4pg/providers/ops.provider.dart';
+import 'package:f4pg/providers/theme.provider.dart';
 import 'package:f4pg/providers/wallet.provider.dart';
 import 'package:f4pg/providers/wallet_login.provider.dart';
 import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
   @override 
   Widget build(BuildContext context) => MultiProvider(
     providers: [
+      ChangeNotifierProvider(
+        create: ((context) => ThemeProvider()), 
+      ),
       ChangeNotifierProvider(
         create: ((context) => WalletLoginProvider()), 
       ),
