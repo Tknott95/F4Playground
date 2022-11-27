@@ -35,17 +35,19 @@ final GoRouter _router = GoRouter(
 
 /* MAIN */
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
+
+
 
   @override 
   Widget build(BuildContext context) => MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: ((context) => ThemeProvider()), 
+        create: ((context) => ThemeProvider()),
       ),
       ChangeNotifierProvider(
         create: ((context) => WalletLoginProvider()), 
@@ -57,13 +59,18 @@ class MyApp extends StatelessWidget {
         create: ((context) => OpsProvider()), 
       )
     ],
-    child: MaterialApp.router(
-      routeInformationProvider: _router.routeInformationProvider,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      )
+    child: Builder(
+      builder: (context) {
+        return MaterialApp.router(
+          routeInformationProvider: _router.routeInformationProvider,
+          routeInformationParser: _router.routeInformationParser,
+          routerDelegate: _router.routerDelegate,
+          themeMode: Provider.of<ThemeProvider>(context, listen: true).themeMode,
+          // theme: ThemeData(
+          //   primarySwatch: Colors.blue,
+          // )
+        );
+      }
     )
   );
 }
