@@ -33,6 +33,7 @@ class WalletLoginPage extends StatelessWidget {
         // color: const Color.fromARGB(200, 1, 1, 1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Padding(
               padding: EdgeInsets.all(25.0),
@@ -82,6 +83,8 @@ class WalletLoginPage extends StatelessWidget {
             //     // initialValue: 'wallet password',
             //   ),
             // ),
+
+             const Text('USE CUSTOM NODE WIDGET HERE - ADA & ERG'),
 
              SizedBox(
               height: 200,
