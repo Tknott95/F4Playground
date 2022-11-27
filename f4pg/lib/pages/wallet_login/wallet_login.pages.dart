@@ -71,7 +71,7 @@ class WalletLoginPage extends StatelessWidget {
                   child: TextFormField(
                       decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
-                      labelText: 'Enter your passowrd',
+                      labelText: 'Enter your password',
                     ),
                     controller: wallPwCtrl,
                     // initialValue: 'wallet password',
