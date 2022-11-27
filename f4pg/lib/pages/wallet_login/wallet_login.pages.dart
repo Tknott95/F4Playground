@@ -97,6 +97,7 @@ class WalletLoginPage extends StatelessWidget {
 
              const Text('USE CUSTOM NODE WIDGET HERE - ADA & ERG'),
 
+             /* can create vars/types for binding changes later */
              SizedBox(
               height: 200,
               width: 400,
@@ -104,14 +105,21 @@ class WalletLoginPage extends StatelessWidget {
                 elevation: 100,
                 splashColor: Color.fromARGB(133, 171, 187, 255),
                 hoverColor: Color.fromARGB(133, 158, 158, 158),
+                textColor: Color.fromARGB(255, 22, 22, 22),
+                highlightColor: Colors.lightGreenAccent,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: const BorderSide(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    width: 1,
+                    style: BorderStyle.solid
                   ),
+                ),
 
                 child: const Text(
                   'RECOVER WALLET',
                   style: TextStyle(
-                    color: Colors.black, 
+                    // color: Colors.black, 
                     fontWeight: FontWeight.w900, 
                     fontSize: 14,
                     ),
