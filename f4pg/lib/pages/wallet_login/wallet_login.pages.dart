@@ -107,11 +107,7 @@ class WalletLoginPage extends StatelessWidget {
               value: isDark(),
               activeColor: Colors.red,
               onChanged: (bool value) {
-                // This is called when the user toggles the switch.
                 Provider.of<ThemeProvider>(context, listen: false).changeThemeMode();
-                // setState(() {
-                //   Provider.of<ThemeProvider>(context).changeThemeMode();
-                // });
               },
               ),
 
