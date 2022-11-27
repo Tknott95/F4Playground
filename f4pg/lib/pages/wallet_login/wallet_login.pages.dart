@@ -119,7 +119,6 @@ class WalletLoginPage extends StatelessWidget {
                 elevation: 100,
                 splashColor: Color.fromARGB(133, 171, 187, 255),
                 hoverColor: Color.fromARGB(133, 158, 158, 158),
-                textColor: Color.fromARGB(255, 22, 22, 22),
                 highlightColor: Colors.lightGreenAccent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
