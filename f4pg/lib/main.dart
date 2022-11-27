@@ -12,8 +12,8 @@ import 'package:provider/provider.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
  GlobalKey<NavigatorState>(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell');
+// final GlobalKey<NavigatorState> _shellNavigatorKey =
+//     GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 /* ROUTING */
 final GoRouter _router = GoRouter(
