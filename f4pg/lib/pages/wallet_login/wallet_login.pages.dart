@@ -62,6 +62,10 @@ class WalletLoginPage extends StatelessWidget {
                   ),
                 ),
 
+                const SizedBox(
+                  width: 10,
+                ),
+
                 SizedBox(
                   width: 200,
                   child: TextFormField(
