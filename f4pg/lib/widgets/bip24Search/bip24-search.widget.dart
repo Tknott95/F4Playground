@@ -35,6 +35,7 @@ import 'package:f4pg/providers/wallet_login.provider.dart';
  My bips could be set each time a single is set or just at the end when hitting the call to action button. 
 */
 
+/* with providers being used this is essentially redundant. */
 var bips24 = {
  0: '',
  1: '',
