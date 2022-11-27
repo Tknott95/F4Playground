@@ -190,7 +190,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
 
 
 
-  void setBipVal(String val, int bipIndex) {
+  void setBipVal(BuildContext context, String val, int bipIndex) {
     print("\n setting bip val ${val}");  
 
     widget.txtController = TextEditingController(text: val);
@@ -398,7 +398,7 @@ class _BipSearchSingleState extends State<BipSearchSingle> {
                         title: MaterialButton(
                           child: Text(bipsList[index]),
                           onPressed: () { 
-                            setBipVal(bipsList[index], widget.bipIndex);
+                            setBipVal(context, bipsList[index], widget.bipIndex);
                             hideOverlay();
                           },
               
