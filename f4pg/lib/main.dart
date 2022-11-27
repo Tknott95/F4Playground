@@ -35,11 +35,11 @@ final GoRouter _router = GoRouter(
 
 /* MAIN */
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+   const MyApp({super.key});
 
 
 
