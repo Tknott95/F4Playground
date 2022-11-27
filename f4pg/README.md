@@ -5,6 +5,8 @@
  - hero widget for animating acorss pages with same iimage (opening a val in a list for example)
  - play withi this hero widget as it creates clean animations
 
+ - sliver list fixes list rendering bug https://youtu.be/LUqDNnv_dh0
+ 
  @TODO
  - bring in go router for nested routing for a pg wrapper
  - on the search query for bips org list to have "starting with letter" words first in list. This needs to be tuned a tad imo. It works for MVP.
