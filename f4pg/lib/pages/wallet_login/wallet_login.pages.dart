@@ -101,12 +101,26 @@ class WalletLoginPage extends StatelessWidget {
               height: 200,
               width: 400,
               child: MaterialButton(
-                child: Text('recover wallet'),
-                onPressed: () {
-                  print('fire ${wallNameCtrl.text} at node');
-                  print('\n bip24s firing ${getBipsTest()}');
-                },
-              ),
+                elevation: 100,
+                splashColor: Color.fromARGB(133, 171, 187, 255),
+                hoverColor: Color.fromARGB(133, 158, 158, 158),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)
+                  ),
+
+                child: const Text(
+                  'RECOVER WALLET',
+                  style: TextStyle(
+                    color: Colors.black, 
+                    fontWeight: FontWeight.w900, 
+                    fontSize: 14,
+                    ),
+                  ),
+                  onPressed: () {
+                    print('fire ${wallNameCtrl.text} at node');
+                    print('\n bip24s firing ${getBipsTest()}');
+                  },
+                ),
             ),
           ],
         ),
