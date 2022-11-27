@@ -37,7 +37,14 @@ class WalletLoginPage extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.all(25.0),
-              child: Text('wallet login playground'),
+              child: Text(
+                'RECOVER YOUR WALLET',
+                style: TextStyle(
+                  color: Colors.black12, 
+                  fontWeight: FontWeight.bold, 
+                  fontSize: 30,
+                  ),
+                ),
             ),
  
             Row(
