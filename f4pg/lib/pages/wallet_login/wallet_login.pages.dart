@@ -2,7 +2,7 @@ import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 
 class WalletLoginPage extends StatelessWidget {
