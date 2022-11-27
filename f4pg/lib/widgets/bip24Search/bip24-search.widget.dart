@@ -19,12 +19,15 @@ import 'dart:io';
 /* i will play wiht this in the pg app for fun, i do want a modularized form from the bip rec so using a global is the only way. I just need to clean it after, set to null. */
 
 /* setting up providers now - DELETE THIS
-will be using providers for escaping this enscapulation to a
- layer up for now.
-the packaged payload to hit the api with will be sent via one layer up. 
+ will be using providers for escaping this enscapulation to a
+  layer up for now.
+ the packaged payload to hit the api with will be sent via one layer up. 
 
-provider for pkgd payload and for which node to hit.
- nodes hitting, for now (ERG - ADA). 
+ provider for pkgd payload and for which node to hit.
+  nodes hitting, for now (ERG - ADA). 
+
+
+ My bips could be set each time a single is set or just at the end when hitting the call to action button. 
 */
 
 var bips24 = {
