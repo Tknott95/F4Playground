@@ -1,3 +1,4 @@
+import 'package:f4pg/providers/theme.provider.dart';
 import 'package:f4pg/providers/wallet_login.provider.dart';
 import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ class WalletLoginPage extends StatelessWidget {
     List<String> getBipsTest() {
       List<String> _allBips = Provider.of<WalletLoginProvider>(context, listen: false).getBips24Keys;
       return _allBips;
+    }
+
+    bool isDark() {
+      return Provider.of<ThemeProvider>(context).isDarkMode;
     }
 
     return Material(
@@ -96,6 +101,19 @@ class WalletLoginPage extends StatelessWidget {
             // ),
 
              const Text('USE CUSTOM NODE WIDGET HERE - ADA & ERG'),
+
+             Switch.adaptive(
+              // This bool value toggles the switch.
+              value: isDark(),
+              activeColor: Colors.red,
+              onChanged: (bool value) {
+                // This is called when the user toggles the switch.
+                Provider.of<ThemeProvider>(context, listen: false).changeThemeMode();
+                // setState(() {
+                //   Provider.of<ThemeProvider>(context).changeThemeMode();
+                // });
+              },
+              ),
 
              /* can create vars/types for binding changes later */
              SizedBox(

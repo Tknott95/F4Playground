@@ -11,6 +11,8 @@ class ThemeProvider extends ChangeNotifier {
   void changeThemeMode() {
     isDarkMode ? _themeMode = ThemeMode.light :  _themeMode = ThemeMode.dark;
      notifyListeners();
+
+     print('\n THEME MODE: $_themeMode');
   }
 
 }
