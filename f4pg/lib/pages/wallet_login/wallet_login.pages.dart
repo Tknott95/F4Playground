@@ -14,6 +14,12 @@ class WalletLoginPage extends StatelessWidget {
   final wallNameCtrl = TextEditingController();  
   final wallPwCtrl = TextEditingController();
 
+  /* could use nested flex and make this look good
+   name and pw on left where bip on right etc, but this is just a pg for lgic
+   possibly when bored I can tune this bby up, style wise.
+   
+  */
+
   @override
   Widget build(BuildContext context) {
     
@@ -33,32 +39,49 @@ class WalletLoginPage extends StatelessWidget {
               child: Text('wallet login playground'),
             ),
  
-            SizedBox(
-              width: 200,
-              child: TextFormField(
-                 decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Enter your wallet name',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: TextFormField(
+                     decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Enter your wallet name',
+                    ),
+                    controller: wallNameCtrl,
+                    // initialValue: 'wallet name',
+                  ),
                 ),
-                controller: wallNameCtrl,
-                // initialValue: 'wallet name',
-              ),
+
+                SizedBox(
+                  width: 200,
+                  child: TextFormField(
+                      decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Enter your passowrd',
+                    ),
+                    controller: wallPwCtrl,
+                    // initialValue: 'wallet password',
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 200,
               child: Bip24SearchWidget()
             ),
-            SizedBox(
-              width: 200,
-              child: TextFormField(
-                  decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Enter your passowrd',
-                ),
-                controller: wallPwCtrl,
-                // initialValue: 'wallet password',
-              ),
-            ),
+            // SizedBox(
+            //   width: 200,
+            //   child: TextFormField(
+            //       decoration: const InputDecoration(
+            //       border: UnderlineInputBorder(),
+            //       labelText: 'Enter your passowrd',
+            //     ),
+            //     controller: wallPwCtrl,
+            //     // initialValue: 'wallet password',
+            //   ),
+            // ),
 
              SizedBox(
               height: 200,
