@@ -22,6 +22,9 @@ import 'dart:io';
 will be using providers for escaping this enscapulation to a
  layer up for now.
 the packaged payload to hit the api with will be sent via one layer up. 
+
+provider for pkgd payload and for which node to hit.
+ nodes hitting, for now (ERG - ADA). 
 */
 
 var bips24 = {
