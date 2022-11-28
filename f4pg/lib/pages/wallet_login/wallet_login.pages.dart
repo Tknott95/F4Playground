@@ -1,6 +1,7 @@
 import 'package:f4pg/providers/theme.provider.dart';
 import 'package:f4pg/providers/wallet_login.provider.dart';
 import 'package:f4pg/widgets/bip24Search/bip24-search.widget.dart';
+import 'package:f4pg/widgets/select_node/select_node.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -110,6 +111,8 @@ class WalletLoginPage extends StatelessWidget {
                 Provider.of<ThemeProvider>(context, listen: false).changeThemeMode();
               },
               ),
+            
+             SelectNodeWidget(),
 
              /* can create vars/types for binding changes later */
              SizedBox(
