@@ -8,6 +8,7 @@
  - sliver list fixes list rendering bug https://youtu.be/LUqDNnv_dh0
 
  @TODO
+ - AM IN NOT CREATING A STATE IN MY STATEFUL WIDGET bip24? 
  - bring in go router for nested routing for a pg wrapper
  - on the search query for bips org list to have "starting with letter" words first in list. This needs to be tuned a tad imo. It works for MVP.
  - I can pull some old reduntant code now that providers are in.

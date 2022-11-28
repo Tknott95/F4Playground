@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:f4pg/providers/wallet_login.provider.dart';
 
 
+/* AM IN NOT CREATING A STATE IN MY STATEFUL WIDGET? */
+
 
 /* might as well make a full wallet rec tool here, or just bring this in now */
 
