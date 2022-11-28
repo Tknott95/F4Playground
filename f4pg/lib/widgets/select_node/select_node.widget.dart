@@ -14,6 +14,9 @@ class SelectNodeWidget extends StatefulWidget {
 
 class _SelectNodeWidgetState extends State<SelectNodeWidget> {
   
+  final adaNodeCtr = TextEditingController();
+  final ergNodeCtrl = TextEditingController();
+
   void setAdaNode(BuildContext _context, String _nodeUsing) {
    Provider.of<OpsProvider>(_context, listen: false).setAdaNode(_nodeUsing);
   }
