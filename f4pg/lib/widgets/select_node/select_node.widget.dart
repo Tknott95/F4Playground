@@ -17,6 +17,8 @@ class _SelectNodeWidgetState extends State<SelectNodeWidget> {
   final adaNodeCtrl = TextEditingController();
   final ergNodeCtrl = TextEditingController();
 
+  bool usingCustomNode = false;
+
   @override
   void initState() {
 
@@ -37,39 +39,63 @@ class _SelectNodeWidgetState extends State<SelectNodeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
       children: [
-        SizedBox(
-          width: 200,
-          child: TextFormField(
-              decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              labelText: 'custom ada node',
+        /* 
+          PUT A SWITCH HERE THAT LOCKS AND UNLOCKS INPUT BOXES
+          ADD A TPGGLE TO RESET TO DEFAULTS
+        */
+        Row(
+          children: [
+            const Text(
+              'RUN CUSTOM NODE?'
             ),
-            controller: adaNodeCtrl,
-             onChanged: ((val) => {
-              setAdaNode(context, val)
-            }),
-          ),
+            Switch.adaptive(
+              value: usingCustomNode,
+              onChanged: (bool val) {
+                setState(() {
+                  usingCustomNode = !usingCustomNode;
+                });
+              }
+            )
+          ],
         ),
-
-        const SizedBox(
-          width: 10,
-        ),
-
-        SizedBox(
-          width: 200,
-          child: TextFormField(
-              decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              labelText: 'custom erg node',
+        SizedBox(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 200,
+              child: TextFormField(
+                  decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'custom ada node',
+                ),
+                controller: adaNodeCtrl,
+                 onChanged: ((val) => {
+                  setAdaNode(context, val)
+                }),
+              ),
             ),
-            controller: ergNodeCtrl,
-            onChanged: ((val) => {
-              setErgNode(context, val)
-            }),
-          ),
+
+            const SizedBox(
+              width: 10,
+            ),
+
+            SizedBox(
+              width: 200,
+              child: TextFormField(
+                  decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'custom erg node',
+                ),
+                controller: ergNodeCtrl,
+                onChanged: ((val) => {
+                  setErgNode(context, val)
+                }),
+              ),
+            ),
+          ],
         ),
       ],
     );
