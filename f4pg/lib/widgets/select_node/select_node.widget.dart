@@ -46,9 +46,15 @@ class _SelectNodeWidgetState extends State<SelectNodeWidget> {
           ADD A TPGGLE TO RESET TO DEFAULTS
         */
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'RUN CUSTOM NODE?'
+              'RUN CUSTOM NODE?',
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0), 
+                fontWeight: FontWeight.bold, 
+                fontSize: 10,
+              ),
             ),
             Switch.adaptive(
               value: usingCustomNode,
@@ -61,41 +67,46 @@ class _SelectNodeWidgetState extends State<SelectNodeWidget> {
           ],
         ),
         SizedBox(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 200,
-              child: TextFormField(
-                  decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'custom ada node',
+        Visibility(
+          visible: usingCustomNode,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 200,
+                child: TextFormField(
+                    enabled: usingCustomNode,
+                    decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'custom ada node',
+                  ),
+                  controller: adaNodeCtrl,
+                   onChanged: ((val) => {
+                    setAdaNode(context, val)
+                  }),
                 ),
-                controller: adaNodeCtrl,
-                 onChanged: ((val) => {
-                  setAdaNode(context, val)
-                }),
               ),
-            ),
-
-            const SizedBox(
-              width: 10,
-            ),
-
-            SizedBox(
-              width: 200,
-              child: TextFormField(
-                  decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'custom erg node',
+        
+              const SizedBox(
+                width: 10,
+              ),
+        
+              SizedBox(
+                width: 200,
+                child: TextFormField(
+                    enabled: usingCustomNode,
+                    decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'custom erg node',
+                  ),
+                  controller: ergNodeCtrl,
+                  onChanged: ((val) => {
+                    setErgNode(context, val)
+                  }),
                 ),
-                controller: ergNodeCtrl,
-                onChanged: ((val) => {
-                  setErgNode(context, val)
-                }),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

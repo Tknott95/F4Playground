@@ -49,8 +49,8 @@ class WalletLoginPage extends StatelessWidget {
                   color: Colors.black12, 
                   fontWeight: FontWeight.bold, 
                   fontSize: 30,
-                  ),
                 ),
+              ),
             ),
  
             Row(
