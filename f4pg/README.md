@@ -1,6 +1,9 @@
 # f4pg
  F4 Playground - many modules/apps in one to bring into other apps.
 
+ @NOTES
+ - will load in bips on create then go through another page explaining to then fire at the recover page (mabe fdynamic title via constructor for illusion of diff page). This will onboard into the app.
+
  @IMPORTANT
  - hero widget for animating acorss pages with same iimage (opening a val in a list for example)
  - play withi this hero widget as it creates clean animations
