@@ -1,6 +1,10 @@
 # F4Playground
 Flutter Playground - Widgets made used for other apps
 
+bip tool not updated to the version my "x4Wallet" is using. Local bips, no middleman.
+#### will update this tool later to match x4Wallet or just open source the wallet and the bip tool itself. 
+!! (in x4 I use different a different technique on some parts) 
+
 - bip24 tool
 - providers handling globals for wallet funcs
 - custom theming w/ providers
